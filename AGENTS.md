@@ -5,15 +5,12 @@ agent conversation, so it describes only what is stable and true of the project.
 
 ## Project
 
-<!--
-Replace this section during Sprint 1 with a short description of what you are building:
-the problem, the primary user, and the current state. Two or three sentences.
-Keep it current. An out-of-date description here misleads every future conversation.
--->
+Quiz Maker authentication (Sprint 0) is complete: sign up, sign in, logout, session
+management, and protected routes are implemented and tested.
 
-This is an unmodified AISprints starter. No application features have been built yet.
-The technical PRD in `ai-workspace/` is the source of truth for what is being built and
-for the current phase of work.
+The technical PRD in `ai-workspace/QUIZ_MAKER_TECHNICAL_PRD.md` is the source of truth
+for what is being built. Technology choices from Phase 0 are documented in
+`ai-workspace/PHASE_0_IMPLEMENTATION.md`.
 
 ## Stack
 
@@ -23,9 +20,12 @@ for the current phase of work.
 - **shadcn/ui** on Base UI, `base-nova` style, with Lucide icons
 - **TypeScript** in strict mode
 - **Wrangler** for Cloudflare configuration, secrets, and deployment
+- **Better Auth** for authentication (email/password, sessions)
+- **Cloudflare D1** for user and session persistence
+- **Vitest** for unit and integration tests
 
-No database, authentication, testing framework, or AI SDK is installed yet. Do not
-write code that imports one without adding it first and telling the user.
+No database schema, Drizzle ORM, or auth routes are wired up yet. Do not write code that
+imports Drizzle without adding it first and telling the user.
 
 ## Layout
 
@@ -49,6 +49,9 @@ Import through the `@/` alias, which maps to `src/`.
 | `npm run preview` | Build and run on the local **Workers** runtime |
 | `npm run build` | Production build |
 | `npm run lint` | ESLint |
+| `npm run test` | Run Vitest test suite |
+| `npm run test:watch` | Vitest in watch mode |
+| `npm run db:migrate:local` | Apply D1 migrations to local database |
 | `npm run deploy` | Build and deploy to Cloudflare |
 | `npm run cf-typegen` | Regenerate `cloudflare-env.d.ts` after changing bindings |
 

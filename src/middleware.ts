@@ -1,0 +1,31 @@
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+
+import {
+	isAuthRoute,
+	isProtectedRoute,
+	hasSessionCookie,
+} from "@/lib/auth/route-protection";
+
+export function middleware(request: NextRequest) {
+	const { pathname } = request.nextUrl;
+
+	if (isProtectedRoute(pathname)) {
+		if (!hasSessionCookie(request.cookies)) {
+			return NextResponse.redirect(new URL("/sign-in", request.url));
+		}
+	}
+
+	if (isAuthRoute(pathname)) {
+		if (hasSessionCookie(request.cookies)) {
+			return NextResponse.redirect(new URL("/dashboard", request.url));
+		}
+	}
+
+	return NextResponse.next();
+}
+
+export const config = {
+	matcher: ["/dashboard", "/sign-in", "/sign-up"],
+	runtime: "experimental-edge",
+};
