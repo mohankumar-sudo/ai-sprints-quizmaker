@@ -5,7 +5,7 @@ import { getServerSession } from "@/lib/auth/sign-in";
 import { getAuth } from "@/lib/auth/server";
 import type { SessionIdentity } from "@/lib/auth/session";
 
-export const PROTECTED_ROUTES = ["/dashboard"] as const;
+export const PROTECTED_ROUTES = ["/dashboard", "/mcqs"] as const;
 export const AUTH_ROUTES = ["/sign-in", "/sign-up"] as const;
 
 export const SESSION_COOKIE_NAMES = [

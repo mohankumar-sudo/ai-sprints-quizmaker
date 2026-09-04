@@ -5,11 +5,13 @@ agent conversation, so it describes only what is stable and true of the project.
 
 ## Project
 
-Quiz Maker authentication (Sprint 0) is complete: sign up, sign in, logout, session
-management, and protected routes are implemented and tested.
+Quiz Maker authentication (Sprint 0) is complete. Sprint 2 MCQ CRUD is implemented:
+multiple choice question create/read/update/delete, choices (2–6 per question), attempt
+recording via API, list/create/edit pages at `/mcqs`, and D1 tables `mcq`, `mcq_choice`,
+`mcq_attempt`. See `ai-workspace/sprint2-mcq-crud-prd.md`.
 
-The technical PRD in `ai-workspace/QUIZ_MAKER_TECHNICAL_PRD.md` is the source of truth
-for what is being built. Technology choices from Phase 0 are documented in
+The technical PRD in `ai-workspace/sprint2-mcq-crud-prd.md` is the source of truth for
+the current sprint. Technology choices from Phase 0 are documented in
 `ai-workspace/PHASE_0_IMPLEMENTATION.md`.
 
 ## Stack
@@ -21,11 +23,12 @@ for what is being built. Technology choices from Phase 0 are documented in
 - **TypeScript** in strict mode
 - **Wrangler** for Cloudflare configuration, secrets, and deployment
 - **Better Auth** for authentication (email/password, sessions)
-- **Cloudflare D1** for user and session persistence
+- **Cloudflare D1** for user, session, and MCQ persistence
 - **Vitest** for unit and integration tests
 
-No database schema, Drizzle ORM, or auth routes are wired up yet. Do not write code that
-imports Drizzle without adding it first and telling the user.
+MCQ data access uses raw D1 prepared statements in `src/lib/db/` and business logic in
+`src/lib/services/`. Do not write code that imports Drizzle without adding it first and
+telling the user.
 
 ## Layout
 

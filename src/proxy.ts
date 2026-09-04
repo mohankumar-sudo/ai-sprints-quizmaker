@@ -7,7 +7,7 @@ import {
 	hasSessionCookie,
 } from "@/lib/auth/route-protection";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
 	const { pathname } = request.nextUrl;
 
 	if (isProtectedRoute(pathname)) {
@@ -26,6 +26,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-	matcher: ["/dashboard", "/sign-in", "/sign-up"],
-	runtime: "experimental-edge",
+	matcher: ["/dashboard", "/mcqs/:path*", "/sign-in", "/sign-up"],
 };

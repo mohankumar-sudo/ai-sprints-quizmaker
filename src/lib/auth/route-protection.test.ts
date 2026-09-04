@@ -74,8 +74,9 @@ describe("guest route protection", () => {
 });
 
 describe("protected routes config", () => {
-	it("includes dashboard", () => {
+	it("includes dashboard and mcqs", () => {
 		expect(PROTECTED_ROUTES).toContain("/dashboard");
+		expect(PROTECTED_ROUTES).toContain("/mcqs");
 	});
 });
 
